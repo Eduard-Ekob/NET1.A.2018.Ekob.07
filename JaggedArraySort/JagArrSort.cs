@@ -5,11 +5,11 @@ namespace JaggedArraySort
     public static class JagArrSort
     {
         /// <summary>
-        /// The BubbleSortSumElemInLine sort jagged array by sum elements in line of array
+        /// The method BubbleSortOfIncreasingSumElemInLine sort jagged array with incraesing sum elements in line of array
         /// </summary>
         /// <param name="jagArr">jagArr is incomming array for sort</param>
         /// <exception cref="ArgumentNullException">If incomming array is null</exception>
-        public static void BubbleSortSumElemInLine(int[][] jagArr)
+        public static void BubbleSortOfIncreasingSumElemInLine(int[][] jagArr)
         {
             if (jagArr == null)
             {
@@ -22,7 +22,6 @@ namespace JaggedArraySort
                 {
                     if (jagArr[j] == null )
                     {
-                        //Swap(ref jagArr[i], ref jagArr[j]);
                         continue;
                     }
 
@@ -35,11 +34,76 @@ namespace JaggedArraySort
         }
 
         /// <summary>
-        /// The SortMaxElemInLine sort jagged array with maximum element in line of array
+        /// The method BubbleSortOfDecreasingSumElemInLine sort jagged array with incraesing sum elements in line of array
         /// </summary>
         /// <param name="jagArr">jagArr is incomming array for sort</param>
         /// <exception cref="ArgumentNullException">If incomming array is null</exception>
-        public static void SortMaxElemInLine(int[][] jagArr)
+        public static void BubbleSortOfDecreasingSumElemInLine(int[][] jagArr)
+        {
+            if (jagArr == null)
+            {
+                throw new ArgumentNullException(nameof(jagArr));
+            }
+
+            for (int i = 0; i < jagArr.Length; i++)
+            {
+                for (int j = i + 1; j < jagArr.Length; j++)
+                {
+                    if (jagArr[i] == null)
+                    {
+                        continue;
+                    }
+
+                    if (SumArrLine(ref jagArr[i]) > SumArrLine(ref jagArr[j]))
+                    {
+                        Swap(ref jagArr[i], ref jagArr[j]);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// The method SortOfIncreasingMaxElemInLine sort jagged array with increasing maximum element in line of array
+        /// </summary>
+        /// <param name="jagArr">jagArr is incomming array for sort</param>
+        /// <exception cref="ArgumentNullException">If incomming array is null</exception>
+        public static void SortOfIncreasingMaxElemInLine(int[][] jagArr)
+        {
+            if (jagArr == null)
+            {
+                throw new ArgumentNullException(nameof(jagArr));
+            }
+
+            for (int i = 0; i < jagArr.Length; i++)
+            {
+                for (int j = i + 1; j < jagArr.Length; j++)
+                {
+                    if (jagArr[i] == null)
+                    {
+                        Swap(ref jagArr[i], ref jagArr[j]);
+                        continue;
+                    }
+
+                    if (jagArr[j] == null)
+                    {                       
+                        continue;
+                    }
+
+                    if (MaxArrLine(ref jagArr[i]) < MaxArrLine(ref jagArr[j]))
+                    {
+                        Swap(ref jagArr[i], ref jagArr[j]);
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// The method SortOfDecreasingMaxElemInLine sort jagged array with decreasing maximum element in line of array 
+        /// </summary>
+        /// <param name="jagArr">jagArr is incomming array for sort</param>
+        /// <exception cref="ArgumentNullException">If incomming array is null</exception>
+        public static void SortOfDecreasingMaxElemInLine(int[][] jagArr)
         {
             if (jagArr == null)
             {
@@ -58,11 +122,10 @@ namespace JaggedArraySort
 
                     if (jagArr[j] == null)
                     {
-                       
                         continue;
                     }
 
-                    if (MaxArrLine(ref jagArr[i]) < MaxArrLine(ref jagArr[j]))
+                    if (MaxArrLine(ref jagArr[i]) > MaxArrLine(ref jagArr[j]))
                     {
                         Swap(ref jagArr[i], ref jagArr[j]);
                     }
@@ -71,11 +134,11 @@ namespace JaggedArraySort
         }
 
         /// <summary>
-        /// The SortMinElemInLine sort jagged array with minimum element in line of array
+        /// The method SortOfIncreasingMinElemInLine sort jagged array with increasing minimum element in line of array
         /// </summary>
         /// <param name="jagArr">jagArr is incomming array for sort</param>
         /// <exception cref="ArgumentNullException">If incomming array is null</exception>
-        public static void SortMinElemInLine(int[][] jagArr)
+        public static void SortOfIncreasingMinElemInLine(int[][] jagArr)
         {
             if (jagArr == null)
             {
@@ -98,6 +161,40 @@ namespace JaggedArraySort
                     }
 
                     if (MinArrLine(ref jagArr[i]) > MinArrLine(ref jagArr[j]))
+                    {
+                        Swap(ref jagArr[i], ref jagArr[j]);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// The method SortOfDecreasinginElemInLine sort jagged array with decreasing minimum element in line of array
+        /// </summary>
+        /// <param name="jagArr">jagArr is incomming array for sort</param>
+        /// <exception cref="ArgumentNullException">If incomming array is null</exception>
+        public static void SortOfDecreasingMinElemInLine(int[][] jagArr)
+        {
+            if (jagArr == null)
+            {
+                throw new ArgumentNullException(nameof(jagArr));
+            }
+
+            for (int i = 0; i < jagArr.Length; i++)
+            {
+                for (int j = i + 1; j < jagArr.Length; j++)
+                {
+                    if (jagArr[i] == null)
+                    {
+                        continue;
+                    }
+
+                    if (jagArr[j] == null)
+                    {
+                        Swap(ref jagArr[i], ref jagArr[j]);
+                        continue;
+                    }
+
+                    if (MinArrLine(ref jagArr[i]) < MinArrLine(ref jagArr[j]))
                     {
                         Swap(ref jagArr[i], ref jagArr[j]);
                     }
